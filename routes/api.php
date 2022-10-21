@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// includeFile(__DIR__ . '/api/auth.php');
+includeRouteFiles(__DIR__ . '/api');
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
