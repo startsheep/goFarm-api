@@ -8,6 +8,7 @@ use App\Http\Resources\Category\CategoryCollection;
 use App\Http\Resources\Category\CategoryDetail;
 use App\Http\Searches\CategorySearch;
 use App\Http\Services\Category\CategoryService;
+use App\Http\Traits\ErrorFixer;
 use App\Models\Category;
 use Exception;
 use Illuminate\Http\Request;
@@ -16,6 +17,8 @@ use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
+    use ErrorFixer;
+
     protected $categoryService;
 
     public function __construct(CategoryService $categoryService)
@@ -50,10 +53,7 @@ class CategoryController extends Controller
             return $this->categoryService->create($request->all());
         } catch (Exception $e) {
             DB::rollback();
-            return response()->json([
-                'message' => 'Fail, data failed to create',
-                'status' => 'error',
-            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+            return $this->createError();
         }
     }
 
@@ -86,10 +86,7 @@ class CategoryController extends Controller
             return $this->categoryService->update($id, $request->all());
         } catch (Exception $e) {
             DB::rollback();
-            return response()->json([
-                'message' => 'Fail, data failed to update',
-                'status' => 'error',
-            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+            return $this->updateError();
         }
     }
 

@@ -17,7 +17,8 @@ class UnitTestingSeeder extends Seeder
         $this->call([
             UserSeeder::class,
             RoleSeeder::class,
-            CategorySeeder::class
+            CategorySeeder::class,
+            ProductSeeder::class
         ]);
     }
 }

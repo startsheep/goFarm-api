@@ -4,19 +4,99 @@ namespace App\Http\Services\Product;
 
 use LaravelEasyRepository\Service;
 use App\Http\Repositories\Product\ProductRepository;
+use App\Models\Product;
+use Illuminate\Support\Str;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Storage;
 
-class ProductServiceImplement extends Service implements ProductService{
+class ProductServiceImplement extends Service implements ProductService
+{
 
-     /**
+    /**
      * don't change $this->mainRepository variable name
      * because used in extends service class
      */
-     protected $mainRepository;
+    protected $mainRepository;
 
     public function __construct(ProductRepository $mainRepository)
     {
-      $this->mainRepository = $mainRepository;
+        $this->mainRepository = $mainRepository;
     }
 
-    // Define your custom methods :)
+    public function create($attributes)
+    {
+        if ($attributes['created_by'] == null) {
+            $attributes['created_by'] = auth()->user()->id;
+        }
+
+        if (isset($attributes['image'])) {
+            if (isset($attributes['image']) && $attributes['image']) {
+                $attributes['image'] = $attributes['image']->store('products');
+            }
+        }
+
+        $attributes['slug'] = Str::slug($attributes['title']);
+
+        $product = $this->mainRepository->create($attributes);
+
+        return response()->json([
+            'message' => 'Product has added!',
+            'status' => 'success',
+            'data' => $product
+        ], Response::HTTP_CREATED);
+    }
+
+    public function update($id, $attributes)
+    {
+        $product = $this->mainRepository->findOrFail($id);
+
+        if (isset($attributes['image'])) {
+            if (isset($attributes['image']) && $attributes['image']) {
+                if ($product->image != null) {
+                    Storage::delete($product->image);
+                }
+                $attributes['image'] = $attributes['image']->store('products');
+            }
+        }
+
+        $attributes['slug'] = Str::slug($attributes['title']);
+
+        $product = $product->update($attributes);
+
+        return response()->json([
+            'message' => 'Product has updated!',
+            'status' => 'success',
+            'data' => $product
+        ], Response::HTTP_OK);
+    }
+
+    public function updateStatus($id, $attributes)
+    {
+        $attributes['status'] = $attributes['status'] ? Product::ACTIVE : Product::DEACTIVE;
+
+        $product = $this->mainRepository->update($id, $attributes);
+
+        return response()->json([
+            'message' => 'Product has updated status!',
+            'status' => 'success',
+            'data' => $product
+        ], Response::HTTP_OK);
+    }
+
+    public function delete($id)
+    {
+        $product = $this->mainRepository->findOrFail($id);
+
+        if ($product->image != null) {
+            Storage::delete($product->image);
+        }
+
+        $product->delete();
+
+        return response()->json([
+            'message' => 'Product has deleted!',
+            'status' => 'success',
+            'data' => $product
+        ], Response::HTTP_OK);
+    }
 }
