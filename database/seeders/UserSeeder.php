@@ -22,6 +22,7 @@ class UserSeeder extends Seeder
         $this->truncate('users');
 
         User::factory()->create([
+            'name' => 'admin',
             'email' => 'admin@example.com',
             'phone' => '11111',
             'role_id' => 1
