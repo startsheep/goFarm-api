@@ -20,7 +20,7 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        $roles = ['Admin', 'Pedagang', 'Pembeli'];
+        $roles = ['Admin', 'Merchant', 'Driver', 'Customer'];
 
         $this->disableForeignKeys();
         $this->truncate('roles');
@@ -55,6 +55,9 @@ class RoleSeeder extends Seeder
             }
             if ($user->role_id == 3) {
                 $user->assignRole(Role::where('id', 3)->first());
+            }
+            if ($user->role_id == 4) {
+                $user->assignRole(Role::where('id', 4)->first());
             }
         }
     }

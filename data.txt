@@ -1,0 +1,28 @@
+Role
+- Admin
+- Pelanggan
+- Mitra
+- Driver
+
+User
+- nama
+- username
+- email
+- hp
+- password
+- alamat (default)
+
+Kategori
+- Makanan
+- Minuman
+- Obat
+
+Detail Product
+- Nama Product => (search: nama, kategori)
+- Harga
+- Deskripsi
+- Status
+- Gambar
+
+File
+- document

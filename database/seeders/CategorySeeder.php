@@ -18,7 +18,7 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        $categories = ['Makanan', 'Minuman'];
+        $categories = ['Makanan', 'Minuman', 'Obat-obatan'];
         $this->disableForeignKeys();
         $this->truncate('categories');
         foreach ($categories as $category) {

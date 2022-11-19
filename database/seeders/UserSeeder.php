@@ -23,21 +23,27 @@ class UserSeeder extends Seeder
 
         User::factory()->create([
             'name' => 'admin',
-            'email' => 'admin@example.com',
+            'email' => 'admin@mailinator.com',
             'phone' => '11111',
             'role_id' => 1
         ]);
 
         User::factory()->create([
-            'email' => 'pedagang@example.com',
+            'email' => 'merchant@mailinator.com',
             'phone' => '22222',
             'role_id' => 2
         ]);
 
         User::factory()->create([
-            'email' => 'pembeli@example.com',
+            'email' => 'driver@mailinator.com',
             'phone' => '33333',
             'role_id' => 3
+        ]);
+
+        User::factory()->create([
+            'email' => 'customer@mailinator.com',
+            'phone' => '44444',
+            'role_id' => 4
         ]);
 
         $this->enableForeignKeys();
