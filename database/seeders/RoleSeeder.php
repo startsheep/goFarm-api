@@ -20,9 +20,9 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        $roles = ['Admin', 'Pedagang', 'Pembeli'];
+        $roles = ['Admin', 'Merchant', 'Customer'];
 
-        // $this->disableForeignKeys();
+        $this->disableForeignKeys();
         $this->truncate('roles');
         $this->truncate('permissions');
 
@@ -57,5 +57,7 @@ class RoleSeeder extends Seeder
                 $user->assignRole(Role::where('id', 3)->first());
             }
         }
+
+        $this->enableForeignKeys();
     }
 }

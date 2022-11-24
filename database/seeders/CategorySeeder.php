@@ -19,7 +19,7 @@ class CategorySeeder extends Seeder
     public function run()
     {
         $categories = ['Makanan', 'Minuman'];
-        // $this->disableForeignKeys();
+        $this->disableForeignKeys();
         $this->truncate('categories');
         foreach ($categories as $category) {
             Category::create([
@@ -27,6 +27,6 @@ class CategorySeeder extends Seeder
                 'status' => 1
             ]);
         }
-        // $this->enableForeignKeys();
+        $this->enableForeignKeys();
     }
 }

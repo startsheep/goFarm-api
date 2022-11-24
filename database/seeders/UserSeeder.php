@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        // $this->disableForeignKeys();
+        $this->disableForeignKeys();
         $this->truncate('users');
 
         User::factory()->create([
@@ -40,6 +40,6 @@ class UserSeeder extends Seeder
             'role_id' => 3
         ]);
 
-        // $this->enableForeignKeys();
+        $this->enableForeignKeys();
     }
 }
