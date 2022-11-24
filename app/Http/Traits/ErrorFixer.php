@@ -24,4 +24,12 @@ trait ErrorFixer
             'status' => 'error',
         ], Response::HTTP_INTERNAL_SERVER_ERROR);
     }
+
+    public function deleteError()
+    {
+        return response()->json([
+            'message' => 'Fail, data failed to delete',
+            'status' => 'error',
+        ], Response::HTTP_INTERNAL_SERVER_ERROR);
+    }
 }
