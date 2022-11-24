@@ -34,7 +34,9 @@ jobs:
       env:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
-      run: vendor/bin/phpunit
+      run: |
+        php artisan migrate --seed
+        vendor/bin/phpunit
     - name: Deploy to staging
       uses: appleboy/ssh-action@master
       with:
