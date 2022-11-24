@@ -22,7 +22,7 @@ class RoleSeeder extends Seeder
     {
         $roles = ['Admin', 'Pedagang', 'Pembeli'];
 
-        $this->disableForeignKeys();
+        // $this->disableForeignKeys();
         $this->truncate('roles');
         $this->truncate('permissions');
 
