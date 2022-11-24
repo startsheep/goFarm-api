@@ -3,8 +3,6 @@ name: Laravel
 on:
   push:
     branches: [ "develop" ]
-  pull_request:
-    branches: [ "develop" ]
 
 jobs:
   laravel-tests:
@@ -36,4 +34,4 @@ jobs:
         username: ${{ secrets.USERNAME_STAGING }}
         host: ${{ secrets.HOST_STAGING }}
         password: ${{ secrets.PASSWORD_STAGING }}
-        script: "git pull origin develop && php artisan migrate && php artisan optimize"
+        script: "cd /home/rtqfreel/gofarm/ && git pull origin develop && php artisan migrate && php artisan optimize"
