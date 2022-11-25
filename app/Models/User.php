@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
@@ -53,11 +55,21 @@ class User extends Authenticatable
 
     public function getImageAttribute($image)
     {
-        return url('storage/'.$image);
+        return url('storage/' . $image);
+    }
+
+    public function getNameAttribute($name)
+    {
+        return Str::title($name);
     }
 
     public function merchant(): HasOne
     {
         return $this->hasOne(Merchant::class, 'user_id');
+    }
+
+    public function role(): HasOne
+    {
+        return $this->hasOne(Role::class, 'id');
     }
 }

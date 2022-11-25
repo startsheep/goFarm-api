@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+includeRouteFiles(__DIR__ . '/web');
+
 Route::get('/', function () {
     return view('landing-page');
 });

@@ -4,6 +4,7 @@ namespace App\Http\Repositories\User;
 
 use LaravelEasyRepository\Implementations\Eloquent;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Model;
 
 class UserRepositoryImplement extends Eloquent implements UserRepository
 {
@@ -23,5 +24,10 @@ class UserRepositoryImplement extends Eloquent implements UserRepository
     public function wherePhone($phone)
     {
         return $this->model->wherePhone($phone)->first();
+    }
+
+    public function findByCriteria(array $criteria): ?User
+    {
+        return $this->model->where($criteria)->first();
     }
 }

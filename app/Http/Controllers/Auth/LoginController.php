@@ -26,13 +26,13 @@ class LoginController extends Controller
 
         if (!$user) {
             return response()->json([
-                'message' => 'email atau password salah!'
+                'message' => 'telepon atau password salah!'
             ], Response::HTTP_BAD_REQUEST);
         }
 
         if (!Hash::check($request->password, $user->password)) {
             return response()->json([
-                'message' => 'email atau password salah!'
+                'message' => 'telepon atau password salah!'
             ], Response::HTTP_BAD_REQUEST);
         }
 
