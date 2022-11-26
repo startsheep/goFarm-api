@@ -87,7 +87,8 @@ class MerchantDataTable extends DataTable
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false),
-            Column::make('status'),
+            Column::make('status')
+                ->sortable(false),
             Column::make('name'),
             Column::make('email'),
             Column::make('phone'),

@@ -58,6 +58,22 @@
                 let route = $(this).data('route');
                 $("#formDelete").attr('action', route)
             })
+
+            $("body").on('click', "input[role='switch']", function() {
+                let id = $(this).data('id');
+
+                $.ajax({
+                    url: "{{ url('api/user/doctor/update-status') }}/" + id,
+                    type: "post",
+                    headers: {
+                        "Authorization": "Bearer {{ Session::get('token') }}"
+                    },
+                    data: {
+                        _method: 'put'
+                    },
+                    success: function(response) {}
+                })
+            })
         })
     </script>
 @endpush
