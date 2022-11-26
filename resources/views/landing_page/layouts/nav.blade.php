@@ -11,7 +11,7 @@
                 <li><a class="nav-link scrollto active" href="#hero">Beranda</a></li>
                 <li><a class="nav-link scrollto" href="#about">Tentang Kami</a></li>
                 <li><a class="nav-link scrollto" href="#features">Fitur</a></li>
-                <li><a class="nav-link scrollto" href="#team">Team</a></li>
+                <li><a class="nav-link scrollto" href="#team">TIM</a></li>
                 <li><a class="nav-link scrollto" href="#contact">Hubungi Kami</a></li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
