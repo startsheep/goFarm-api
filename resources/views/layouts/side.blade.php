@@ -5,7 +5,7 @@
         </a>
 
         <ul class="sidebar-nav">
-            <li class="sidebar-item active">
+            <li class="sidebar-item {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}">
                 <a class="sidebar-link" href="{{ route('web.dashboard.index') }}">
                     <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
                 </a>
@@ -15,25 +15,25 @@
                 Users
             </li>
 
-            <li class="sidebar-item">
+            <li class="sidebar-item {{ Request::segment(2) == 'admin' ? 'active' : '' }}">
                 <a class="sidebar-link" href="{{ route('web.user.admin.index') }}">
                     <i class="align-middle" data-feather="user"></i> <span class="align-middle">Admin</span>
                 </a>
             </li>
 
-            <li class="sidebar-item">
+            <li class="sidebar-item {{ Request::segment(2) == 'doctor' ? 'active' : '' }}">
                 <a class="sidebar-link" href="{{ route('web.user.doctor.index') }}">
                     <i class="align-middle" data-feather="user"></i> <span class="align-middle">Doctor</span>
                 </a>
             </li>
 
-            <li class="sidebar-item">
+            <li class="sidebar-item {{ Request::segment(2) == 'merchant' ? 'active' : '' }}">
                 <a class="sidebar-link" href="{{ route('web.user.merchant.index') }}">
                     <i class="align-middle" data-feather="user"></i> <span class="align-middle">Merchant</span>
                 </a>
             </li>
 
-            <li class="sidebar-item">
+            <li class="sidebar-item {{ Request::segment(2) == 'customer' ? 'active' : '' }}">
                 <a class="sidebar-link" href="{{ route('web.user.customer.index') }}">
                     <i class="align-middle" data-feather="user"></i> <span class="align-middle">Customer</span>
                 </a>

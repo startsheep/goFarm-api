@@ -34,6 +34,8 @@
 <script src="{{ asset('template/js/jquery/jquery-3.6.1.min.js') }}"></script>
 <script src="{{ asset('template/js/jquery-validation/jquery.validate.min.js') }}"></script>
 <script src="{{ asset('template/js/jquery-validation/additional-methods.min.js') }}"></script>
+<script src="{{ asset('template/js/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('template/js/datatables/dataTables.bootstrap5.min.js') }}"></script>
 @stack('js')
 @stack('modal')
 

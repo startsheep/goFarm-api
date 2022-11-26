@@ -16,7 +16,8 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-hover table-bordered">
+                        {{ $dataTable->table() }}
+                        {{-- <table class="table table-hover table-bordered">
                             <thead>
                                 <tr>
                                     <th>No</th>
@@ -50,7 +51,7 @@
                                     </tr>
                                 @endforeach
                             </tbody>
-                        </table>
+                        </table> --}}
                     </div>
                 </div>
             </div>
@@ -68,7 +69,7 @@
                     <h1 class="modal-title fs-5" id="deleteAdminLabel">Deleting data!</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ route('web.user.admin.destroy', $admin->id) }}" method="post" id="formDelete">
+                <form action="" method="post" id="formDelete">
                     @csrf
                     @method('delete')
                     <div class="modal-body">
@@ -85,6 +86,7 @@
 @endpush
 
 @push('js')
+    {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
     <script>
         $(function() {
             $("body").on('click', '.btn-delete', function() {

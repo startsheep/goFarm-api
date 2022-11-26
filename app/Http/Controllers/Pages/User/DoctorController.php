@@ -3,10 +3,23 @@
 namespace App\Http\Controllers\Pages\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Repositories\Doctor\DoctorRepository;
+use App\Http\Services\Doctor\DoctorService;
+use App\Http\Traits\MessageFixer;
 use Illuminate\Http\Request;
 
 class DoctorController extends Controller
 {
+    use MessageFixer;
+
+    protected $doctorService, $doctorRepository;
+
+    public function __construct(DoctorService $doctorService, DoctorRepository $doctorRepository)
+    {
+        $this->doctorService = $doctorService;
+        $this->doctorRepository = $doctorRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
