@@ -2,11 +2,18 @@
 
 namespace App\Http\Controllers\Pages\User;
 
+use App\DataTables\DoctorDataTable;
 use App\Http\Controllers\Controller;
 use App\Http\Repositories\Doctor\DoctorRepository;
+use App\Http\Requests\WEB\User\Doctor\CreateRequest;
+use App\Http\Requests\WEB\User\Doctor\UpdateRequest;
 use App\Http\Services\Doctor\DoctorService;
 use App\Http\Traits\MessageFixer;
+use App\Models\Role as ModelsRole;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use Spatie\Permission\Models\Role;
 
 class DoctorController extends Controller
 {
@@ -25,9 +32,9 @@ class DoctorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(DoctorDataTable $dataTable)
     {
-        //
+        return $dataTable->render('users.doctor.index');
     }
 
     /**
@@ -37,7 +44,7 @@ class DoctorController extends Controller
      */
     public function create()
     {
-        //
+        return view('users.doctor.create');
     }
 
     /**
@@ -46,9 +53,29 @@ class DoctorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateRequest $request)
     {
-        //
+        DB::beginTransaction();
+
+        try {
+            DB::commit();
+
+            $image = $request->file->store('users/doctors');
+
+            $request->merge([
+                'image' => $image,
+                'password' => 'password',
+                'role_id' => ModelsRole::DOCTOR
+            ]);
+
+            $user = $this->doctorRepository->create($request->all());
+            $user->syncRoles(Role::find(ModelsRole::DOCTOR));
+
+            return $this->success(route('doctor.index'), 'doctor has been created!');
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return $this->error($th->getMessage());
+        }
     }
 
     /**
@@ -59,7 +86,9 @@ class DoctorController extends Controller
      */
     public function show($id)
     {
-        //
+        $doctor = $this->doctorService->findOrFail($id);
+
+        return view('users.doctor.show', compact('doctor'));
     }
 
     /**
@@ -70,7 +99,9 @@ class DoctorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $doctor = $this->doctorService->findOrFail($id);
+
+        return view('users.doctor.edit', compact('doctor'));
     }
 
     /**
@@ -80,9 +111,33 @@ class DoctorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
-        //
+        DB::beginTransaction();
+
+        try {
+            DB::commit();
+            $doctor = $this->doctorService->findOrFail($id);
+
+            if ($request->hasFile('file')) {
+                $image = str_replace(url('storage'), '', $doctor->image);
+                if ($image) {
+                    Storage::delete($image);
+                }
+
+                $image = $request->file->store('users/doctors');
+                $request->merge([
+                    'image' => $image,
+                ]);
+            }
+
+            $this->doctorService->update($id, $request->all());
+
+            return $this->success(route('doctor.show', $id), 'doctor has been updated!');
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return $this->error($th->getMessage());
+        }
     }
 
     /**
@@ -93,6 +148,14 @@ class DoctorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $doctor = $this->doctorRepository->findOrFail($id);
+
+        $image = str_replace(url('storage'), '', $doctor->image);
+        if ($image) {
+            Storage::delete($image);
+        }
+
+        $doctor->delete();
+        return $this->success(route('doctor.index'), 'doctor has been deleted!');
     }
 }

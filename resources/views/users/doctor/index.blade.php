@@ -4,7 +4,7 @@
     <main class="content">
         <div class="container-fluid p-0">
 
-            <h1 class="h3 mb-3">List Account <strong>Admin</strong></h1>
+            <h1 class="h3 mb-3">List Account <strong>Doctor</strong></h1>
 
             @if (session('message'))
                 {!! session('message') !!}
@@ -12,7 +12,7 @@
 
             <div class="card">
                 <div class="card-header d-flex justify-content-end">
-                    <a href="{{ route('admin.create') }}" class="btn btn-primary">Add Admin</a>
+                    <a href="{{ route('doctor.create') }}" class="btn btn-primary">Add Doctor</a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">

@@ -23,7 +23,7 @@
             @endif
 
             <form class="card mb-3" enctype="multipart/form-data" method="post"
-                action="{{ route('web.user.admin.update', $admin->id) }}" id="formUpdate">
+                action="{{ route('admin.update', $admin->id) }}" id="formUpdate">
                 @method('put')
                 @csrf
                 <div class="card-body">

@@ -7,9 +7,9 @@
     <main class="content">
         <div class="container-fluid p-0">
             <h1 class="h3 mb-3">
-                <a href="{{ route('admin.index') }}" class="btn">
+                <a href="{{ route('doctor.index') }}" class="btn">
                     <i class="align-middle" data-feather="arrow-left"></i>
-                </a> Create Admin
+                </a> Create Doctor
             </h1>
 
             @if ($errors->any())
@@ -22,7 +22,7 @@
                 </div>
             @endif
 
-            <form class="card mb-3" enctype="multipart/form-data" method="post" action="{{ route('admin.store') }}"
+            <form class="card mb-3" enctype="multipart/form-data" method="post" action="{{ route('doctor.store') }}"
                 id="formCreate">
                 @csrf
                 <div class="card-body">
