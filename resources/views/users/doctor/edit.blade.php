@@ -7,9 +7,9 @@
     <main class="content">
         <div class="container-fluid p-0">
             <h1 class="h3 mb-3">
-                <a href="{{ route('admin.index') }}" class="btn">
+                <a onclick="history.back()" class="btn">
                     <i class="align-middle" data-feather="arrow-left"></i>
-                </a> Create Admin
+                </a> Update Doctor
             </h1>
 
             @if ($errors->any())
@@ -22,30 +22,41 @@
                 </div>
             @endif
 
-            <form class="card mb-3" enctype="multipart/form-data" method="post" action="{{ route('admin.store') }}"
-                id="formCreate">
+            <form class="card mb-3" enctype="multipart/form-data" method="post"
+                action="{{ route('doctor.update', $doctor->id) }}" id="formUpdate">
+                @method('put')
                 @csrf
                 <div class="card-body">
                     <div class="mb-2">
                         <label for="email">Email</label>
-                        <input type="email" name="email" class="form-control" value="{{ old('email') }}">
+                        <input type="email" name="email" class="form-control"
+                            value="{{ old('email') ?? $doctor->email }}">
                     </div>
                     <div class="mb-2">
                         <label for="name">Name</label>
-                        <input type="text" name="name" class="form-control" value="{{ old('name') }}">
+                        <input type="text" name="name" class="form-control"
+                            value="{{ old('name') ?? $doctor->name }}">
                     </div>
                     <div class="mb-2">
                         <label for="phone">Phone Number</label>
-                        <input type="text" name="phone" class="form-control" value="{{ old('phone') }}">
+                        <input type="text" name="phone" class="form-control"
+                            value="{{ old('phone') ?? $doctor->phone }}">
                     </div>
-                    <div class="mb-2">
-                        <label for="file">Image</label>
-                        <input type="file" name="file" class="form-control">
+                    <div class="mb-2 row">
+                        <div class="col-lg-6 mb-2">
+                            <label for="file">Image</label>
+                            <input type="file" name="file" class="form-control">
+                        </div>
+                        <div class="col-lg-6 mb-2">
+                            <img src="{{ $doctor->image }}" class="img-fluid mt-lg-3" alt="{{ $doctor->name }}"
+                                width="250" height="250"
+                                onerror="this.error=null; this.src='{{ asset('template/img/no-images.png') }}'">
+                        </div>
                     </div>
                 </div>
                 <div class="card-footer">
-                    <button type="reset" class="btn btn-warning">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Add</button>
+                    <button type="reset" class="btn btn-warning">Refresh</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
                 </div>
             </form>
         </div>
@@ -58,7 +69,7 @@
             var JQUERY4U = {};
             JQUERY4U.UTIL = {
                 setupFormValidation: function() {
-                    $("#formCreate").validate({
+                    $("#formUpdate").validate({
                         lang: "id",
                         ignore: "",
                         rules: {
@@ -74,7 +85,6 @@
                                 number: true
                             },
                             file: {
-                                required: true,
                                 extension: "jpg|png|jpeg"
                             },
                         },

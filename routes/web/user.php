@@ -7,8 +7,8 @@ use App\Http\Controllers\Pages\User\MerchantController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth'])->prefix('user')->group(function () {
-    Route::resource('admin', AdminController::class, ['as' => 'web.user']);
-    Route::resource('doctor', DoctorController::class, ['as' => 'web.user']);
-    Route::resource('merchant', MerchantController::class, ['as' => 'web.user']);
-    Route::resource('customer', CustomerController::class, ['as' => 'web.user']);
+    Route::resource('admin', AdminController::class);
+    Route::resource('doctor', DoctorController::class);
+    Route::resource('merchant', MerchantController::class);
+    Route::resource('customer', CustomerController::class);
 });

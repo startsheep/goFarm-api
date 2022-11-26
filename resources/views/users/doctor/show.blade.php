@@ -9,22 +9,22 @@
             @if (session('message'))
                 {!! session('message') !!}
             @endif
-            <h1 class="h3 mb-3"><a href="{{ route('admin.index') }}" class="btn"><i class="align-middle"
+            <h1 class="h3 mb-3"><a href="{{ route('doctor.index') }}" class="btn"><i class="align-middle"
                         data-feather="arrow-left"></i></a> Profile Detail
-                <strong>{{ $admin->name }}</strong>
+                <strong>{{ $doctor->name }}</strong>
             </h1>
             <div class="card mb-3">
                 <div class="card-body text-center">
-                    <img src="{{ $admin->image }}" alt="{{ $admin->name }}" class="img-fluid rounded-circle mb-2"
+                    <img src="{{ $doctor->image }}" alt="{{ $doctor->name }}" class="img-fluid rounded-circle mb-2"
                         width="128" height="128"
                         onerror="this.error=null; this.src='{{ asset('template/img/no-images.png') }}'">
-                    <h5 class="card-title mb-0">{{ strtoupper($admin->name) }}</h5>
-                    <div class="text-muted mb-2">{{ $admin->role->name }}</div>
+                    <h5 class="card-title mb-0">{{ strtoupper($doctor->name) }}</h5>
+                    <div class="text-muted mb-2">{{ $doctor->role->name }}</div>
 
                     <div>
-                        <a class="btn btn-warning btn-sm" href="{{ route('admin.edit', $admin->id) }}">Edit</a>
+                        <a class="btn btn-warning btn-sm" href="{{ route('doctor.edit', $doctor->id) }}">Edit</a>
                         <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal"
-                            data-bs-target="#deleteAdmin">
+                            data-bs-target="#deleteDoctor">
                             Delete</a>
                     </div>
                 </div>
@@ -33,12 +33,12 @@
                     <h5 class="h6 card-title">About</h5>
                     <ul class="list-unstyled mb-0">
                         <li class="mb-1"> <i class="align-middle" data-feather="mail"></i>
-                            Email address <a href="mailto:{{ $admin->email }}">{{ $admin->email }}</a></li>
+                            Email address <a href="mailto:{{ $doctor->email }}">{{ $doctor->email }}</a></li>
 
                         <li class="mb-1"> <i class="align-middle" data-feather="phone"></i> Phone number <a
-                                href="tel:{{ $admin->phone }}">{{ $admin->phone }}</a></li>
+                                href="tel:{{ $doctor->phone }}">{{ $doctor->phone }}</a></li>
                         <li class="mb-1"> <i class="align-middle" data-feather="tag"></i> Created by
-                            {{ Carbon::createFromFormat('Y-m-d H:i:s', $admin->created_at)->diffForHumans() }}</li>
+                            {{ Carbon::createFromFormat('Y-m-d H:i:s', $doctor->created_at)->diffForHumans() }}</li>
                     </ul>
                 </div>
                 <hr class="my-0">
@@ -59,14 +59,14 @@
 
 @push('modal')
     <!-- Modal -->
-    <div class="modal fade" id="deleteAdmin" tabindex="-1" aria-labelledby="deleteAdminLabel" aria-hidden="true">
+    <div class="modal fade" id="deleteDoctor" tabindex="-1" aria-labelledby="deleteDoctorLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="deleteAdminLabel">Deleting data!</h1>
+                    <h1 class="modal-title fs-5" id="deleteDoctorLabel">Deleting data!</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ route('admin.destroy', $admin->id) }}" method="post" id="formDelete">
+                <form action="{{ route('doctor.destroy', $doctor->id) }}" method="post" id="formDelete">
                     @csrf
                     @method('delete')
                     <div class="modal-body">

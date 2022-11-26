@@ -14,7 +14,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class AdminDataTable extends DataTable
+class DoctorDataTable extends DataTable
 {
     use ActionButton;
 
@@ -28,7 +28,7 @@ class AdminDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', function (User $user) {
-                return $this->buttons($user, 'admin');
+                return $this->buttons($user, 'doctor');
             })
             ->setRowId('id');
     }
@@ -41,7 +41,7 @@ class AdminDataTable extends DataTable
      */
     public function query(User $model): QueryBuilder
     {
-        return $model->newQuery()->where('role_id', Role::ADMIN)->orderBy('id', 'desc');
+        return $model->newQuery()->where('role_id', Role::DOCTOR)->orderBy('id', 'desc');
     }
 
     /**
@@ -52,12 +52,12 @@ class AdminDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-            ->setTableId('admin-table')
+            ->setTableId('doctor-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
             //->dom('Bfrtip')
             ->orderBy(1)
-            ->selectStyleSingle('table-hover')
+            ->selectStyleSingle()
             ->buttons([
                 Button::make('excel'),
                 Button::make('csv'),
@@ -92,6 +92,6 @@ class AdminDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'Admin_' . date('YmdHis');
+        return 'Doctor_' . date('YmdHis');
     }
 }
