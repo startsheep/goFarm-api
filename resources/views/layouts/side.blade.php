@@ -49,14 +49,14 @@
                 </a>
             </li>
 
-            <li class="sidebar-item">
-                <a class="sidebar-link" href="ui-forms.html">
+            <li class="sidebar-item {{ Request::segment(1) == 'product' ? 'active' : '' }}">
+                <a class="sidebar-link" href="{{ route('product.index') }}">
                     <i class="align-middle" data-feather="package"></i> <span class="align-middle">Product</span>
                 </a>
             </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="ui-cards.html">
+                <a class="sidebar-link" href="{{ url('') }}">
                     <i class="align-middle" data-feather="shopping-cart"></i> <span
                         class="align-middle">Transaction</span>
                 </a>
