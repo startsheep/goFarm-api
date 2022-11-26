@@ -2,19 +2,33 @@
 
 namespace App\Http\Controllers\Pages\User;
 
+use App\DataTables\MerchantDataTable;
 use App\Http\Controllers\Controller;
+use App\Http\Repositories\Merchant\MerchantRepository;
+use App\Http\Services\Merchant\MerchantService;
+use App\Http\Traits\MessageFixer;
 use Illuminate\Http\Request;
 
 class MerchantController extends Controller
 {
+    use MessageFixer;
+
+    protected $merchantService, $merchantRepository;
+
+    public function __construct(MerchantService $merchantService, MerchantRepository $merchantRepository)
+    {
+        $this->merchantService = $merchantService;
+        $this->merchantRepository = $merchantRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(MerchantDataTable $dataTable)
     {
-        //
+        return $dataTable->render('users.merchant.index');
     }
 
     /**
@@ -46,7 +60,9 @@ class MerchantController extends Controller
      */
     public function show($id)
     {
-        //
+        $merchant = $this->merchantService->findOrFail($id);
+
+        return view('users.merchant.show', compact('merchant'));
     }
 
     /**

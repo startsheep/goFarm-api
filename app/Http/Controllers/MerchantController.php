@@ -11,6 +11,7 @@ use App\Http\Services\Merchant\MerchantService;
 use App\Http\Traits\ErrorFixer;
 use App\Models\Merchant;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 
 class MerchantController extends Controller
@@ -19,7 +20,8 @@ class MerchantController extends Controller
 
     protected $merchantService;
 
-    public function __construct(MerchantService $merchantService) {
+    public function __construct(MerchantService $merchantService)
+    {
         $this->merchantService = $merchantService;
     }
 
@@ -106,5 +108,21 @@ class MerchantController extends Controller
             DB::rollback();
             return $this->deleteError();
         }
+    }
+
+    public function updateStatus($id)
+    {
+        $merchant = $this->merchantService->findOrFail($id);
+
+        $request['status'] = $merchant->status ? 0 : 1;
+        $status = $merchant->status ? 'deactive' : 'active';
+
+        $merchant = $this->merchantService->update($id, $request);
+
+        return response()->json([
+            'message' => "merchant has been $status!",
+            'status' => 'success',
+            'data' => $status
+        ], Response::HTTP_OK);
     }
 }
