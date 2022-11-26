@@ -40,66 +40,46 @@
             </li>
 
             <li class="sidebar-header">
-                Tools & Components
+                Master Data
             </li>
 
-            <li class="sidebar-item">
+            <li class="sidebar-item {{ Request::segment(1) == 'category' ? 'active' : '' }}">
                 <a class="sidebar-link" href="ui-buttons.html">
-                    <i class="align-middle" data-feather="square"></i> <span class="align-middle">Buttons</span>
+                    <i class="align-middle" data-feather="flag"></i> <span class="align-middle">Category</span>
                 </a>
             </li>
 
             <li class="sidebar-item">
                 <a class="sidebar-link" href="ui-forms.html">
-                    <i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Forms</span>
+                    <i class="align-middle" data-feather="package"></i> <span class="align-middle">Product</span>
                 </a>
             </li>
 
             <li class="sidebar-item">
                 <a class="sidebar-link" href="ui-cards.html">
-                    <i class="align-middle" data-feather="grid"></i> <span class="align-middle">Cards</span>
-                </a>
-            </li>
-
-            <li class="sidebar-item">
-                <a class="sidebar-link" href="ui-typography.html">
-                    <i class="align-middle" data-feather="align-left"></i> <span class="align-middle">Typography</span>
-                </a>
-            </li>
-
-            <li class="sidebar-item">
-                <a class="sidebar-link" href="icons-feather.html">
-                    <i class="align-middle" data-feather="coffee"></i> <span class="align-middle">Icons</span>
+                    <i class="align-middle" data-feather="shopping-cart"></i> <span
+                        class="align-middle">Transaction</span>
                 </a>
             </li>
 
             <li class="sidebar-header">
-                Plugins & Addons
+                Others
             </li>
 
             <li class="sidebar-item">
                 <a class="sidebar-link" href="charts-chartjs.html">
-                    <i class="align-middle" data-feather="bar-chart-2"></i> <span class="align-middle">Charts</span>
+                    <i class="align-middle" data-feather="check-circle"></i> <span class="align-middle">Merchant
+                        Approval</span>
                 </a>
             </li>
 
             <li class="sidebar-item">
                 <a class="sidebar-link" href="maps-google.html">
-                    <i class="align-middle" data-feather="map"></i> <span class="align-middle">Maps</span>
+                    <i class="align-middle" data-feather="message-square"></i> <span
+                        class="align-middle">Messages</span>
                 </a>
             </li>
         </ul>
 
-        <div class="sidebar-cta">
-            <div class="sidebar-cta-content">
-                <strong class="d-inline-block mb-2">Upgrade to Pro</strong>
-                <div class="mb-3 text-sm">
-                    Are you looking for more components? Check out our premium version.
-                </div>
-                <div class="d-grid">
-                    <a href="upgrade-to-pro.html" class="btn btn-primary">Upgrade to Pro</a>
-                </div>
-            </div>
-        </div>
     </div>
 </nav>
