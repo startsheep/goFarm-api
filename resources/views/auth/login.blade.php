@@ -74,6 +74,7 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('template/js/jquery/jquery-3.6.1.min.js') }}"></script>
     <script src="{{ asset('template/js/jquery-validation/jquery.validate.min.js') }}"></script>
+
     <script>
         (function($, W, D) {
             var JQUERY4U = {};

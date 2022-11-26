@@ -13,5 +13,7 @@ class Role extends Model
 
     const MERCHANT = 2;
 
-    const CUSTOMER = 2;
+    const CUSTOMER = 3;
+
+    const DOCTOR = 4;
 }
