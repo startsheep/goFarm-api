@@ -4,7 +4,7 @@
     <div class="hero-text" data-aos="zoom-out">
         <h2>Selamat Datang di Go - Farm Platform</h2>
         <p>Kami siap membantu anda dalam menemukkan hewan terbaik bagi anda</p>
-        <a href="#about" class="btn-get-started scrollto">Get Started</a>
+        <a href="#call-to-action" class="btn-get-started scrollto">Download Aplikasi</a>
     </div>
 
     <div class="product-screens">
