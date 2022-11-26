@@ -4,9 +4,13 @@ namespace App\Http\Traits;
 
 trait ActionButton
 {
-    protected function buttons($user, $route, $mail = true, $edit = true, $delete = true)
+    protected function buttons($user, $route, $mail = true, $edit = true, $delete = true, $show = true)
     {
-        $btn = '<a href="' . route($route . '.show', $user->id) . '" class="btn text-info" title="Show"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye align-middle"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></a>';
+        $btn = '';
+
+        if ($show) {
+            $btn = '<a href="' . route($route . '.show', $user->id) . '" class="btn text-info" title="Show"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye align-middle"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></a>';
+        }
 
         if ($mail && !$user->email_verified_at) {
             $btn .= '<a href="' . route($route . '.show', $user->id) . '" class="btn text-success"  title="Send Email"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail align-middle"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a>';

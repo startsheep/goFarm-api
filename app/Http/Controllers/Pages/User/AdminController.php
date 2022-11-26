@@ -72,7 +72,7 @@ class AdminController extends Controller
             $user = $this->adminRepository->create($request->all());
             $user->syncRoles(Role::find(ModelsRole::ADMIN));
 
-            return $this->success(route('web.user.admin.index'), 'admin has been created!');
+            return $this->success(route('admin.index'), 'admin has been created!');
         } catch (\Throwable $th) {
             DB::rollBack();
             return $this->error($th->getMessage());
@@ -134,7 +134,7 @@ class AdminController extends Controller
 
             $this->adminService->update($id, $request->all());
 
-            return $this->success(route('web.user.admin.show', $id), 'admin has been updated!');
+            return $this->success(route('admin.show', $id), 'admin has been updated!');
         } catch (\Throwable $th) {
             DB::rollBack();
             return $this->error($th->getMessage());
@@ -157,6 +157,6 @@ class AdminController extends Controller
         }
 
         $admin->delete();
-        return $this->success(route('web.user.admin.index'), 'admin has been deleted!');
+        return $this->success(route('admin.index'), 'admin has been deleted!');
     }
 }

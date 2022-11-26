@@ -100,4 +100,20 @@ class CategoryController extends Controller
     {
         return $this->categoryService->delete($id);
     }
+
+    public function updateStatus($id)
+    {
+        $category = $this->categoryService->findOrFail($id);
+
+        $request['status'] = $category->status ? 0 : 1;
+        $status = $category->status ? 'deactive' : 'active';
+
+        $category = $this->categoryService->update($id, $request);
+
+        return response()->json([
+            'message' => "category has been $status!",
+            'status' => 'success',
+            'data' => $status
+        ], Response::HTTP_OK);
+    }
 }
