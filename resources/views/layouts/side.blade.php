@@ -1,7 +1,7 @@
 <nav id="sidebar" class="sidebar js-sidebar">
     <div class="sidebar-content js-simplebar">
         <a class="sidebar-brand" href="{{ route('web.dashboard.index') }}">
-            <span class="align-middle">AdminKit</span>
+            <span class="align-middle">Go Farm</span>
         </a>
 
         <ul class="sidebar-nav">
@@ -44,7 +44,7 @@
             </li>
 
             <li class="sidebar-item {{ Request::segment(1) == 'category' ? 'active' : '' }}">
-                <a class="sidebar-link" href="ui-buttons.html">
+                <a class="sidebar-link" href="{{ route('category.index') }}">
                     <i class="align-middle" data-feather="flag"></i> <span class="align-middle">Category</span>
                 </a>
             </li>
