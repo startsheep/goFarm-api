@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Pages\User;
 
+use App\DataTables\AdminDataTable;
 use App\Http\Controllers\Controller;
 use App\Http\Repositories\Admin\AdminRepository;
 use App\Http\Requests\WEB\User\Admin\CreateRequest;
@@ -32,11 +33,9 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(AdminDataTable $dataTable)
     {
-        $data = $this->adminService->all();
-
-        return view('users.admin.index', $data);
+        return $dataTable->render('users.admin.index');
     }
 
     /**
