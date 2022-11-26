@@ -30,7 +30,15 @@ class MerchantDataTable extends DataTable
             ->addColumn('action', function (User $user) {
                 return $this->buttons($user, 'merchant', false, false, false);
             })
-            ->setRowId('id');
+            ->editColumn('status', function (User $user) {
+                if ($user->status) {
+                    return "<div class='form-check form-switch'><input class='form-check-input' type='checkbox' role='switch' data-id='$user->id' checked></div>";
+                }
+
+                return "<div class='form-check form-switch'><input class='form-check-input' type='checkbox' role='switch' data-id='$user->id'></div>";
+            })
+            ->setRowId('id')
+            ->rawColumns(['action', 'status']);
     }
 
     /**
@@ -79,6 +87,7 @@ class MerchantDataTable extends DataTable
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false),
+            Column::make('status'),
             Column::make('name'),
             Column::make('email'),
             Column::make('phone'),
