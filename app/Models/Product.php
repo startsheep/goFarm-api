@@ -15,7 +15,7 @@ class Product extends Model
     const DEACTIVE = 0;
 
     protected $fillable = [
-        'category_id',
+        'category',
         'title',
         'slug',
         'price',
@@ -24,6 +24,16 @@ class Product extends Model
         'status',
         'created_by'
     ];
+
+    protected function getPriceAttribute($price)
+    {
+        return "Rp " . number_format($price, 2, ',', '.');
+    }
+
+    protected function getImageAttribute($image)
+    {
+        return url('storage/' . $image);
+    }
 
     public function category(): BelongsTo
     {

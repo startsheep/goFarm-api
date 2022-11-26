@@ -72,14 +72,16 @@ class ProductServiceImplement extends Service implements ProductService
 
     public function updateStatus($id, $attributes)
     {
-        $attributes['status'] = $attributes['status'] ? Product::ACTIVE : Product::DEACTIVE;
+        $product = $this->mainRepository->findOrFail($id);
+        $attributes['status'] = $product->status ? Product::DEACTIVE : Product::ACTIVE;
+        $status = $product->status ? 'deactive' : 'active';
 
         $product = $this->mainRepository->update($id, $attributes);
 
         return response()->json([
             'message' => 'Product has updated status!',
             'status' => 'success',
-            'data' => $product
+            'data' => $status
         ], Response::HTTP_OK);
     }
 
