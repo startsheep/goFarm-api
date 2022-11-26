@@ -7,13 +7,7 @@
 
     @include('landing_page.components.features')
 
-    @include('landing_page.components.client')
-
-    @include('landing_page.components.faq')
-
     @include('landing_page.components.teams')
-
-    @include('landing_page.components.contact')
 
 </main><!-- End #main -->
 

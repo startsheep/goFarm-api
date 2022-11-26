@@ -20,34 +20,28 @@
                 <div class="row">
 
                     <div class="col-lg-6 col-md-6 box" data-aos="fade-up">
-                        <div class="icon"><i class="bi bi-briefcase"></i></div>
-                        <h4 class="title"><a href="">Tracking</a></h4>
+                        <div class="icon"><i class="bi bi-map"></i></div>
+                        <h4 class="title">Tracking</h4>
                         <p class="description">Memudahkan customer untuk menemukkan penjual hewan - hewan ternak maupun
                             hewan yang siap dipelihara.</p>
                     </div>
                     <div class="col-lg-6 col-md-6 box" data-aos="fade-up">
-                        <div class="icon"><i class="bi bi-card-checklist"></i></div>
-                        <h4 class="title"><a href="">Foto 360<sup>o</sup></a></h4>
+                        <div class="icon"><i class="bi bi-camera-fill"></i></div>
+                        <h4 class="title">Foto 360<sup>o</sup></h4>
                         <p class="description">Foto 360° memudahkan customer dalam melihat kondisi hewan yang benar -
                             benar sehat dalam segi fisik dan meningkatkan kepercayaan customer terhadap penjual.</p>
                     </div>
                     <div class="col-lg-6 col-md-6 box" data-aos="fade-up" dat-aos-delay="100">
-                        <div class="icon"><i class="bi bi-binoculars"></i></div>
-                        <h4 class="title"><a href="">Artificial Intelligence</a></h4>
+                        <div class="icon"><i class="bi bi-robot"></i></div>
+                        <h4 class="title">Artificial Intelligence</h4>
                         <p class="description">Pemanfaatan AI digunakan untuk mengetahui jenis hewan - hewan yang akan
                             pelihara atau disukai oleh customer.</p>
                     </div>
                     <div class="col-lg-6 col-md-6 box" data-aos="fade-up" data-aos-delay="100">
-                        <div class="icon"><i class="bi bi-brightness-high"></i></div>
-                        <h4 class="title"><a href="">Adopsi Hewan</a></h4>
+                        <div class="icon"><i class="bi bi-save"></i></div>
+                        <h4 class="title">Adopsi Hewan</h4>
                         <p class="description">Memudahkan pengadopsi hewan dalam menemukkan hewan yang akan diadopsi
                             atau dipelihara.</p>
-                    </div>
-                    <div class="col-lg-6 col-md-6 box" data-aos="fade-up" data-aos-delay="100">
-                        <div class="icon"><i class="bi bi-brightness-high"></i></div>
-                        <h4 class="title"><a href="">Konsultasi Hewan</a></h4>
-                        <p class="description">Fitur konsultasi hewan dapat dimanfaatkan oleh customer apabila hewan
-                            yang dipelihara tersebut sedang dalam kondisi tidak sehat atau dll.</p>
                     </div>
                 </div>
 
@@ -66,8 +60,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <img class="advanced-feature-img-right wow fadeInRight"
-                        src="{{ url('assets/img/advanced-feature-1.jpg') }}" alt="">
+                    <img class="advanced-feature-img-right wow fadeInRight" src="{{ url('assets/img/tgarut.jpg') }}"
+                        alt="">
                     <div>
                         <h2>Nandang Farm</h2>
                         <p align="justify">
@@ -89,8 +83,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <img class="advanced-feature-img-left" src="{{ url('assets/img/advanced-feature-2.jpg') }}"
-                        alt="">
+                    <img class="advanced-feature-img-left" src="{{ url('assets/img/ttasik.jpeg') }}" alt="">
                     <div>
                         <h2>Fikri Qurban Tasikmalaya</h2>
                         <p align="justify">Fikri Qurban Tasikmalaya telah menggeluti bidang usaha peternakan selama 20
@@ -109,70 +102,52 @@
     </div>
 </section><!-- End Advanced Featuress Section -->
 
-<!-- ======= Call To Action Section ======= -->
-<section id="call-to-action">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-9 text-center text-lg-start">
-                <h3 class="cta-title">Call To Action</h3>
-                <p class="cta-text"> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                    deserunt mollit anim id est laborum.</p>
-            </div>
-            <div class="col-lg-3 cta-btn-container text-center">
-                <a class="cta-btn align-middle" href="#">Call To Action</a>
-            </div>
-        </div>
-
-    </div>
-</section><!-- End Call To Action Section -->
+@include('landing_page.components.cta')
 
 <!-- ======= More Features Section ======= -->
 <section id="more-features" class="section-bg">
     <div class="container" data-aos="fade-up">
 
         <div class="section-header">
-            <h3 class="section-title">More Features</h3>
+            <h3 class="section-title">Fitur Lainnya</h3>
             <span class="section-divider"></span>
-            <p class="section-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-                doloremque</p>
         </div>
 
         <div class="row gy-4">
 
             <div class="col-lg-6">
                 <div class="box">
-                    <div class="icon"><i class="bi bi-briefcase"></i></div>
-                    <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-                    <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi
-                        sint occaecati cupiditate non provident etiro rabeta lingo.</p>
+                    <div class="icon"><i class="bi bi-cart"></i></div>
+                    <h4 class="title">Transaksi</h4>
+                    <p class="description">Transaksi digunakan untuk memudahkan customer dalam melakukan pembelian
+                        secara online.</p>
                 </div>
             </div>
 
             <div class="col-lg-6">
                 <div class="box">
-                    <div class="icon"><i class="bi bi-card-checklist"></i></div>
-                    <h4 class="title"><a href="">Dolor Sitema</a></h4>
-                    <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-                        ea commodo consequat tarad limino ata nodera clas.</p>
+                    <div class="icon"><i class="bi bi-chat"></i></div>
+                    <h4 class="title">Chat dengan penjual</h4>
+                    <p class="description">Chat dengan penjual digunakan customer untuk saling berinteraksi dengan
+                        penjual terkait dengan hewan ternak/perliharaan-nya.</p>
                 </div>
             </div>
 
             <div class="col-lg-6">
                 <div class="box">
-                    <div class="icon"><i class="bi bi-bar-chart"></i></div>
-                    <h4 class="title"><a href="">Sed ut perspiciatis</a></h4>
-                    <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
-                        eu fugiat nulla pariatur trinige zareta lobur trade.</p>
+                    <div class="icon"><i class="bi bi-star"></i></div>
+                    <h4 class="title">Rating</h4>
+                    <p class="description">Rating pada hewan - hewan ternak/peliharaan digunakan untuk meningkatkan
+                        produktivitas penjualan hewan - hewan ternak.</p>
                 </div>
             </div>
 
             <div class="col-lg-6">
                 <div class="box">
-                    <div class="icon"><i class="bi bi-binoculars"></i></div>
-                    <h4 class="title"><a href="">Magni Dolores</a></h4>
-                    <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                        deserunt mollit anim id est laborum rideta zanox satirente madera</p>
+                    <div class="icon"><i class="bi bi-person-badge"></i></div>
+                    <h4 class="title">Konsultasi Hewan</h4>
+                    <p class="description">Fitur konsultasi hewan dapat dimanfaatkan oleh customer apabila hewan yang
+                        dipelihara tersebut sedang dalam kondisi tidak sehat atau dll.</p>
                 </div>
             </div>
 
