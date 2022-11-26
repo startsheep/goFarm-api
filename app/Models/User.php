@@ -27,6 +27,7 @@ class User extends Authenticatable
         'phone',
         'role_id',
         'password',
+        'image'
     ];
 
     /**
@@ -70,6 +71,6 @@ class User extends Authenticatable
 
     public function role(): HasOne
     {
-        return $this->hasOne(Role::class, 'id');
+        return $this->hasOne(Role::class, 'id', 'role_id');
     }
 }
