@@ -22,6 +22,7 @@ class LoginController extends Controller
     public function __construct(UserRepository $userRepository)
     {
         $this->userRepository = $userRepository;
+        $this->middleware('guest');
     }
 
     public function index()
