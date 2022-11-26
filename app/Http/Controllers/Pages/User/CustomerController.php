@@ -2,19 +2,33 @@
 
 namespace App\Http\Controllers\Pages\User;
 
+use App\DataTables\CustomerDataTable;
 use App\Http\Controllers\Controller;
+use App\Http\Repositories\Customer\CustomerRepository;
+use App\Http\Services\Customer\CustomerService;
+use App\Http\Traits\MessageFixer;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
+    use MessageFixer;
+
+    protected $customerService, $customerRepository;
+
+    public function __construct(CustomerService $customerService, CustomerRepository $customerRepository)
+    {
+        $this->customerService = $customerService;
+        $this->customerRepository = $customerRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(CustomerDataTable $dataTable)
     {
-        //
+        return $dataTable->render('users.customer.index');
     }
 
     /**
@@ -46,7 +60,9 @@ class CustomerController extends Controller
      */
     public function show($id)
     {
-        //
+        $customer = $this->customerService->findOrFail($id);
+
+        return view('users.customer.show', compact('customer'));
     }
 
     /**

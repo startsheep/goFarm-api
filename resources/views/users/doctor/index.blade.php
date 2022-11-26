@@ -4,7 +4,7 @@
     <main class="content">
         <div class="container-fluid p-0">
 
-            <h1 class="h3 mb-3">List Account <strong>Doctor</strong></h1>
+            <h1 class="h3 mb-3">List <strong>Doctor</strong></h1>
 
             @if (session('message'))
                 {!! session('message') !!}

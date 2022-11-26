@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -40,6 +41,11 @@ class LoginController extends Controller
         }
 
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            $role = $user->roles->pluck('name');
+            $token = $user->createToken('api', [$role]);
+
+            Session::put('token', $token->plainTextToken);
+
             $request->session()->regenerate();
 
             return redirect()->intended(route('web.dashboard.index'));
