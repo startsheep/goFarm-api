@@ -34,4 +34,4 @@ jobs:
         username: ${{ secrets.USERNAME_STAGING }}
         host: ${{ secrets.HOST_STAGING }}
         password: ${{ secrets.PASSWORD_STAGING }}
-        script: "cd /home/rtqfreel/gofarm/ && git pull origin develop && php artisan migrate && php artisan optimize"
+        script: "cd /home/rtqfreel/gofarm/ && composer install && git pull origin develop && php artisan migrate && php artisan optimize"
