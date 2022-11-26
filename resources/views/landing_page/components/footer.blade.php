@@ -1,23 +1,21 @@
 <!-- ======= Footer ======= -->
 <footer id="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 text-lg-start text-center">
-                <div class="copyright">
-                    &copy; Copyright <strong>Go Farm</strong>. All Rights Reserved
-                </div>
-                <div class="credits">
-                    Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-                </div>
+    <div class="container text-center">
+        <div class="contact-about mb-3">
+            <h3>GO Farm</h3>
+            <div class="social-links">
+                <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
             </div>
-            <div class="col-lg-6">
-                <nav class="footer-links text-lg-right text-center pt-2 pt-lg-0">
-                    <a href="#intro" class="scrollto">Home</a>
-                    <a href="#about" class="scrollto">About</a>
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Use</a>
-                </nav>
-            </div>
+        </div>
+        <div class="copyright">
+            &copy; Copyright <strong>Go Farm</strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
         </div>
     </div>
 </footer><!-- End  Footer -->
