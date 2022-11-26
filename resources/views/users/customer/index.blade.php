@@ -4,16 +4,13 @@
     <main class="content">
         <div class="container-fluid p-0">
 
-            <h1 class="h3 mb-3">List <strong>Admin</strong></h1>
+            <h1 class="h3 mb-3">List <strong>Customer</strong></h1>
 
             @if (session('message'))
                 {!! session('message') !!}
             @endif
 
             <div class="card">
-                <div class="card-header d-flex justify-content-end">
-                    <a href="{{ route('admin.create') }}" class="btn btn-primary">Add Admin</a>
-                </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         {{ $dataTable->table() }}

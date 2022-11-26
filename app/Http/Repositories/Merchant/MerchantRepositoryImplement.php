@@ -4,7 +4,6 @@ namespace App\Http\Repositories\Merchant;
 
 use LaravelEasyRepository\Implementations\Eloquent;
 use App\Models\Merchant;
-use App\Models\User;
 
 class MerchantRepositoryImplement extends Eloquent implements MerchantRepository{
 
