@@ -30,7 +30,15 @@ class AdminDataTable extends DataTable
             ->addColumn('action', function (User $user) {
                 return $this->buttons($user, 'admin');
             })
-            ->setRowId('id');
+            ->editColumn('status', function (User $user) {
+                if ($user->status) {
+                    return "<div class='form-check form-switch'><input class='form-check-input' type='checkbox' role='switch' data-id='$user->id' checked></div>";
+                }
+
+                return "<div class='form-check form-switch'><input class='form-check-input' type='checkbox' role='switch' data-id='$user->id'></div>";
+            })
+            ->setRowId('id')
+            ->rawColumns(['action', 'status']);
     }
 
     /**
@@ -79,6 +87,8 @@ class AdminDataTable extends DataTable
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false),
+            Column::make('status')
+                ->sortable(false),
             Column::make('name'),
             Column::make('email'),
             Column::make('phone'),
