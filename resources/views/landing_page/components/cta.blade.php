@@ -6,7 +6,8 @@
                 <p class="cta-text"> Dapatkan aplikasi kami dengan menekan tombol <strong>Download</strong>.</p>
             </div>
             <div class="col-lg-3 cta-btn-container text-center">
-                <a class="cta-btn align-middle" href="#">Download</a>
+                <a class="cta-btn align-middle" target="_blank"
+                    href="https://drive.google.com/drive/u/0/folders/1Wcl4qBDTQ9fQd5ltRN4dyovUn57E-mPC">Download</a>
             </div>
         </div>
 
