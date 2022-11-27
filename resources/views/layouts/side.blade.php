@@ -66,15 +66,15 @@
                 Others
             </li>
 
-            <li class="sidebar-item">
-                <a class="sidebar-link" href="charts-chartjs.html">
+            <li class="sidebar-item {{ Request::segment(1) == 'merchant-approval' ? 'active' : '' }}">
+                <a class="sidebar-link" href="{{ route('merchant-approval.index') }}">
                     <i class="align-middle" data-feather="check-circle"></i> <span class="align-middle">Merchant
                         Approval</span>
                 </a>
             </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="maps-google.html">
+                <a class="sidebar-link" href="">
                     <i class="align-middle" data-feather="message-square"></i> <span
                         class="align-middle">Messages</span>
                 </a>
